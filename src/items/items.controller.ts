@@ -4,12 +4,12 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Post,
   Put,
 } from '@nestjs/common';
-import { CreateItemDto } from './dto/createItemDto';
 import { ItemsService } from './items.service';
-import { UpdateItemDto } from './dto/updateItemDto';
+import { CreateItemDto, UpdateItemDto } from './dto/item.dto';
 
 @Controller('items')
 export class ItemsController {
@@ -20,8 +20,9 @@ export class ItemsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    const item = this.itemService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    console.log(typeof id);
+    const item = this.itemService.findOne(id);
     if (!item) {
       return { message: `Item ${id} not found` };
     }
@@ -29,8 +30,8 @@ export class ItemsController {
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string) {
-    this.itemService.delete(+id);
+  delete(@Param('id', ParseIntPipe) id: number) {
+    this.itemService.delete(id);
     return {
       message: `Item ${id} deleted`,
     };

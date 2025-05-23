@@ -6,3 +6,6 @@ npm run start:dev
 
 - Generate service
 nest g service items
+
+- To generate without test file
+nest g service items --no-spec

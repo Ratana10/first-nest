@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Item } from './interface/item.interface';
-import { CreateItemDto } from './dto/createItemDto';
-import { UpdateItemDto } from './dto/updateItemDto';
+import { CreateItemDto, UpdateItemDto } from './dto/item.dto';
 
 @Injectable()
 export class ItemsService {
