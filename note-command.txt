@@ -1,0 +1,8 @@
+- Install controller
+nest g controller items
+
+- Start server with nodemon
+npm run start:dev
+
+- Generate service
+nest g service items
